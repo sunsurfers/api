@@ -1,6 +1,7 @@
 api.sunserfers
 ==============
 
+```
 First time:
 
 Install nodejs (+ npm), mysql
@@ -16,13 +17,15 @@ Fill database with fixtures:
 Then npm-packages:
 * $ npm i
 * $ sudo npm i -g supervisor
+```
 
 ```
 Dev-mode:
 * $ npm run watch (for watchers js/css of webapp)
 * $ npm run server (for json api and static serving)
 * open http://127.0.0.1:3000
-
+```
+```
 Other:
 * $ npm run build (once build webapp)
 
