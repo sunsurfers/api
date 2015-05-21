@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "email": "marat@sunserfers.ru",
+      "password": "162eb12d75298612fb3a45e0d6226b87",
+
+      "name": "Марат",
+      "surname": "Хасанов",
+      "living": "Где-то в малазийи",
+      "public_status": "В любой непонятной ситуации - пой мантры",
+      "description": "Лидер секты вечно улыбающихся",
+
+      "status": "approved",
+
+      "instagram_id": "marathasanov",
+      "facebook_id": "marathasanov",
+      "vkontakte_id": "marathasanov"
+    },
+    {
+      "email": "murad@sunserfers.ru",
+      "password": "76ae3ce0585ca0051126fd844cefbb30",
+
+      "name": "Мурад",
+      "surname": "Рогожников",
+      "living": "Овощую на Филипинах",
+      "public_status": "жизнь случается",
+      "description": "Главный матерщинник слета",
+
+      "status": "wasongathering",
+
+      "facebook_id": "rogozhnikoff",
+      "vkontakte_id": "rogozhnikoff"
+    }
+  ]
+}
