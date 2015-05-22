@@ -1,34 +1,37 @@
 api.sunserfers
 ==============
 
+### First time:
+1. Install nodejs (+ npm), mysql
+2. Create database:
 ```
-First time:
-
-Install nodejs (+ npm), mysql
-
-Create database:
-* $ sudo mysql
-* $ CREATE USER 'sunserfer'@'localhost' IDENTIFIED BY 'nonsecurepassword';
-* $ GRANT ALL PRIVILEGES ON 'suncommunity' . * TO 'sunserfer'@'localhost';
-
-Fill database with fixtures:
-* $ node db-refill.js
-
-Then npm-packages:
-* $ npm i
-* $ sudo npm i -g supervisor
+$ sudo mysql
+$ CREATE USER 'sunserfer'@'localhost' IDENTIFIED BY 'nonsecurepassword';
+$ GRANT ALL PRIVILEGES ON 'suncommunity' . * TO 'sunserfer'@'localhost';
 ```
-
+3. Then npm-packages:
 ```
-Dev-mode:
-* $ npm run watch (for watchers js/css of webapp)
-* $ npm run server (for json api and static serving)
-* open http://127.0.0.1:3000
+$ npm i
+$ sudo npm i -g supervisor
 ```
+4. Fill database with fixtures:
 ```
-Other:
-* $ npm run build (once build webapp)
-
+$ node db-refill.js
 ```
 
-TODO: separate api.sunserfers (db and json-api) and community.sunserfers (webapp)
+### Dev-mode:
+```
+$ npm run watch (for watchers js/css of webapp)
+$ npm run server (for json api and static serving)
+open http://127.0.0.1:3000
+```
+
+
+
+### Docs for developing:
+* Sequelize ORM - http://sequelize.readthedocs.org/en/
+* Express.js server - http://expressjs.com/4x/api.html
+...
+
+
+> TODO: separate api.sunserfers (db and json-api) and community.sunserfers (webapp)
