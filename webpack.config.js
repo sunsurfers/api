@@ -14,8 +14,13 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.jsx$/, loader: 'jsx-loader?harmony'},
-      {test: /\.js$/, loader: 'jsx-loader?harmony'},
+      {
+        test: /\.jsx$/,
+        loaders: ['jsx-loader?harmony']
+      },
+      {
+        test: /\.js$/, loaders: ['jsx-loader?harmony']
+      },
       {
         test: /\.less$/,
         loader: "style!css!less"
