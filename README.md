@@ -35,19 +35,5 @@ open http://127.0.0.1:3000
 
 
 > TODO: separate api.sunserfers (db and json-api) and community.sunserfers (webapp)
-
-//
-
-// hot-loader
-// moment.js to react
-
-
-/*
-*
-* миксином можно оборачивать рендер метод пейджа и в случае надобности
-* загрузки данных извне (или если по данным пришел промис) (тоесть по неготовности данных) показывает "Loading..."
-*
-* хуй его знает как его вязать с флюксом
-* а тут вообще хуй его знает как вязать
-*
-* */
+> TODO: hot-loader
+> TODO: moment.js to react
