@@ -11,15 +11,9 @@ var Promise = require('promise');
  *       function reject(err, response) {}
  *     )
  * */
-var log = require('./logger.js').curry('api');
 
 module.exports = {
   get: function (path, extra) {
-    log(
-        'get',
-        [path, extra]
-    );
-
     return new Promise(function (resolve, reject) {
       transport
           .get(path)
