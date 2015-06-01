@@ -41,6 +41,5 @@ module.exports = {
       __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
     })
     , new webpack.optimize.CommonsChunkPlugin('common.js')
-    //, new webpack.IgnorePlugin(/^jquery$/) // for backbone
   ]
 };

@@ -3,21 +3,28 @@ var {Table} = require('react-bootstrap');
 var api = require('../core/api.js');
 var map = require('lodash/collection/map');
 
+var userStore = require('../store/user');
+var userActions = require('../action/user');
+var Reflux = require('reflux');
+
+
 module.exports = React.createClass({
-  componentWillMount: function () {
-    // how to cache?
-    api.get('/users').then(function (users) {
-      this.setState({
-        users: users
-      })
-    }.bind(this));
+  mixins: [
+    Reflux.listenTo(userStore, 'userStoreHandle')
+  ],
+  userStoreHandle: function(users) {
+    this.setState({
+      users: users
+    })
   },
-  getInitialState: function () {
+  getInitialState: function(){
     return {
       users: null
     }
   },
-
+  componentWillMount: function () {
+    userActions.downloadUsers()
+  },
   render: function () {
     var {users} = this.state;
 

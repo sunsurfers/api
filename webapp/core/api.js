@@ -23,11 +23,12 @@ module.exports = {
               resolve(res.body, res)
             } else {
               reject(err, res)
+              console.error('some problem with query', [err, res], [path, extra]);
             }
           });
     });
   },
-  post: function(){
+  post: function () {
     // ... put, delete, other things
   }
 };
