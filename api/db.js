@@ -3,5 +3,10 @@ var Sequelize = require('sequelize'),
 
 module.exports = new Sequelize(dbconf.name, dbconf.user, dbconf.password, {
   host: dbconf.host,
-  dialect: dbconf.type
+  dialect: 'mysql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
 });

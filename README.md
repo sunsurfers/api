@@ -35,3 +35,5 @@ open http://127.0.0.1:3000
 
 
 > TODO: separate api.sunserfers (db and json-api) and community.sunserfers (webapp)
+> TODO: hot-loader
+> TODO: moment.js to react

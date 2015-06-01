@@ -2,6 +2,5 @@
   "name": "suncommunity",
   "user": "sunserfer",
   "password": "nonsecurepassword",
-  "host": "127.0.0.1",
-  "type": "mysql"
+  "host": "127.0.0.1"
 }

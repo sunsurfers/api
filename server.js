@@ -7,8 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./api/routes');
-
 var app = express();
+
+var noop = function () {
+}
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -52,6 +54,14 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
+
+/* Test connection to mysql */
+var db = require('./api/db');
+db.authenticate().then(noop, function (err) {
+  console.error('ERROR: Unable to connect to the db "' + db.config.database + '":', err);
+});
+
+
+var server = app.listen(app.get('port'), function () {
   debug('Express server listening on port ' + server.address().port);
 });
