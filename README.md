@@ -2,12 +2,14 @@ api.sunserfers
 ==============
 
 ### First time:
-1. Install nodejs (+ npm), mysql
+1. Install [nodejs](https://nodejs.org/) (+ npm), [mysql](https://dev.mysql.com/downloads/installer/).
 2. Create database:
 ```
+$ mysql.server start
 $ sudo mysql
+$ CREATE DATABASE suncommunity;
 $ CREATE USER 'sunserfer'@'localhost' IDENTIFIED BY 'nonsecurepassword';
-$ GRANT ALL PRIVILEGES ON 'suncommunity' . * TO 'sunserfer'@'localhost';
+$ GRANT ALL PRIVILEGES ON suncommunity.* TO sunserfer@localhost;
 ```
 3. Then npm-packages:
 ```
