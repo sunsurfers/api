@@ -1,5 +1,5 @@
-var db = require('./api/db'),
-    User = require('./api/scheme/user'),
+var db = require('./src/db'),
+    User = require('./src/scheme/user'),
     users = require('./fixture/users.json').users;
 
 

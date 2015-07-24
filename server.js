@@ -2,7 +2,7 @@ var debug = require('debug')('server.js');
 var express = require('express');
 var path = require('path');
 
-var db = require('./api/db');
+var db = require('./src/db');
 
 var app = express();
 
@@ -15,12 +15,12 @@ app.use(require('body-parser').urlencoded());
 app.use(require('cookie-parser')());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3333);
 
 
 
 db.authenticate().then(function(){
-  require('./api/initializers').forEach(function (method) {
+  require('./src/initializers').forEach(function (method) {
     method(app);
   });
 
