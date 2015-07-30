@@ -1,5 +1,7 @@
 var Sequelize = require('sequelize'),
-    db = require('../db');
+   db = require('../db'),
+   Promise = require('promise'),
+   _ = require('lodash');
 
 module.exports = db.define('user', {
   email: {
@@ -19,8 +21,36 @@ module.exports = db.define('user', {
   instagram_id: Sequelize.STRING,
   facebook_id: Sequelize.STRING,
   vkontakte_id: Sequelize.STRING
-}, {});
-
+}, {
+  hooks: {
+    afterFind: function () {
+      //console.log('afterFind', arguments)
+    }
+  },
+  classMethods: {
+    getSafeList: function () {
+      return new Promise(function (resolve, reject) {
+        this.all().then(function (users) {
+          resolve(users.map(function (user) {
+            return _.pick(user,
+               "email",
+               // "password", // not allow password to public
+               "name",
+               "surname",
+               "living",
+               "public_status",
+               "description",
+               "status",
+               "instagram_id",
+               "facebook_id",
+               "vkontakte_id"
+            );
+          }))
+        }, reject);
+      }.bind(this))
+    }
+  }
+});
 
 
 /* Locations */

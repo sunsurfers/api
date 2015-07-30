@@ -30,6 +30,18 @@
 
       "facebook_id": "rogozhnikoff",
       "vkontakte_id": "rogozhnikoff"
+    },
+    {
+      "email": "marina@sunserfers.ru",
+      "password": "CE5225D01C39D2567BC229501D9E610D",
+
+      "name": "Марина",
+      "surname": "Намастэ",
+      "living": "Ришикеш",
+      "public_status": "Всем лучи солнца с Индии",
+      "description": "Та самая девочка",
+
+      "status": "approved"
     }
   ]
 }

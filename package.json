@@ -4,9 +4,8 @@
   "description": "database layer",
   "main": "./server.js",
   "scripts": {
-    "build": "webpack --progress --colors -p",
-    "watch": "webpack --progress --colors --watch -d",
-    "server": "supervisor -e js,json -i public,webapp server.js",
+    "start": "supervisor -e js,json -i public,webapp server.js",
+    "db": "node ./src/utils/db-refill.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
