@@ -2,13 +2,10 @@ var express = require('express');
 var User = require('./scheme/user');
 var router = express.Router();
 var passport = require('passport');
+var AuthenticationNeeded = require('./utils/AuthenticationNeeded');
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/fail');
-}
 
-/* GET index page */
+/* get INDEX page */
 router.get('/', function(req, res) {
   res.sendFile('index.html', {
     root: __dirname + '/public/'
@@ -16,7 +13,8 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/users', ensureAuthenticated, function(req, res) {
+/* get USERS page */
+router.get('/users', AuthenticationNeeded, function(req, res) {
   // dev fixtures
   User.all().then(function(users){
     res.send(users);
@@ -25,16 +23,11 @@ router.get('/users', ensureAuthenticated, function(req, res) {
 
 
 
-/* Authentification */
-router.get('/signin-fail', function(req, res) {
-  res.send({status: 'fail'})
-});
-
-router.get('/signin-success', function(req, res) {
-  res.send({status: 'success'})
-});
 
 
+
+
+/* User try to authorize */
 router.post(
     '/signIn',
     passport.authenticate('local', {
@@ -43,6 +36,17 @@ router.post(
       failureFlash: true
     })
 );
+
+
+/* FAIL/SUCCESS responses for authorize try */
+router.get('/signin-fail', function(req, res) {
+  res.send({status: 'fail'})
+});
+
+router.get('/signin-success', function(req, res) {
+  res.send({status: 'success'})
+});
+
 
 
 module.exports = router;
