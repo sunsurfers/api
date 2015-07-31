@@ -1,9 +1,10 @@
 var Sequelize = require('sequelize'),
    db = require('../db'),
+   Countries = require('./country'),
    Promise = require('promise'),
    _ = require('lodash');
 
-module.exports = db.define('user', {
+module.exports = User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     primaryKey: true
@@ -12,7 +13,7 @@ module.exports = db.define('user', {
 
   name: Sequelize.STRING,
   surname: Sequelize.STRING,
-  living: Sequelize.STRING,
+  //living: Sequelize.STRING,
   public_status: Sequelize.STRING,
   description: Sequelize.STRING,
 
@@ -53,11 +54,4 @@ module.exports = db.define('user', {
 });
 
 
-/* Locations */
-/*
- * user_id
- * ltd
- * lng
- * date
- *
- * */
+//User.belongsTo(Countries, {foreignKey: 'living', targetKey: 'code'})

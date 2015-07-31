@@ -3,9 +3,48 @@
 никаких пейджингов, просто работаем как апишка
 
 
-[-] USERS
-[-] LAT-LNG
 
+
+
+
+Таблицы
+=======
+
+### USERS
+  email
+  password
+  name
+  surname
+  living: country_code
+  public_status
+  description
+  status
+  instagram_id
+  facebook_id
+  vkontakte_id
+   
+### POINTS
+  user_id
+  lat
+  lng
+  type (auto|manual)
+  
+### ADS
+  
+
+
+###  
+
+
+Словари
+=======
+
+### countries.json
+  code
+  name
+  
+  
+  
 
 API
 ====

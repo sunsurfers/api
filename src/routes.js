@@ -1,9 +1,10 @@
 var express = require('express');
 var User = require('./scheme/user');
+var Countries = require('./scheme/country');
 var router = express.Router();
 var passport = require('passport');
 var AuthenticationNeeded = require('./utils/AuthenticationNeeded');
-
+var _ = require('lodash');
 
 
 /* get INDEX page */
@@ -32,7 +33,6 @@ router.post(
    })
 );
 
-
 /* FAIL/SUCCESS responses for authorize try */
 router.get('/signin-fail', function (req, res) {
   res.send({status: 'fail'})
@@ -41,6 +41,16 @@ router.get('/signin-fail', function (req, res) {
 router.get('/signin-success', function (req, res) {
   res.send({status: 'success'})
 });
+
+
+
+/* Countries */
+
+router.get('/countries', function (req, res) {
+  Countries.all().then(res.send.bind(res))
+});
+
+
 
 
 module.exports = router;
