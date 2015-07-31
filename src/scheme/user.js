@@ -1,19 +1,21 @@
 var Sequelize = require('sequelize'),
    db = require('../db'),
-   Countries = require('./country'),
+   //Countries = require('./country'),
    Promise = require('promise'),
    _ = require('lodash');
 
 module.exports = User = db.define('user', {
-  email: {
-    type: Sequelize.STRING,
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
     primaryKey: true
   },
+  email: Sequelize.STRING,
   password: Sequelize.STRING,
 
   name: Sequelize.STRING,
   surname: Sequelize.STRING,
-  //living: Sequelize.STRING,
+  living: Sequelize.STRING,
   public_status: Sequelize.STRING,
   description: Sequelize.STRING,
 
@@ -34,6 +36,7 @@ module.exports = User = db.define('user', {
         this.all().then(function (users) {
           resolve(users.map(function (user) {
             return _.pick(user,
+               "id",
                "email",
                // "password", // not allow password to public
                "name",
