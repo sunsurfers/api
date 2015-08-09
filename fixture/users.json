@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "nickname": "marathasanov",
       "email": "marat@sunserfers.ru",
       "password": "162eb12d75298612fb3a45e0d6226b87",
 
@@ -17,6 +18,7 @@
       "vkontakte_id": "marathasanov"
     },
     {
+      "nickname": "rogozhnikoff",
       "email": "murad@sunserfers.ru",
       "password": "76ae3ce0585ca0051126fd844cefbb30",
 
@@ -32,6 +34,7 @@
       "vkontakte_id": "rogozhnikoff"
     },
     {
+      "nickname": "marinkanamaste",
       "email": "marina@sunserfers.ru",
       "password": "CE5225D01C39D2567BC229501D9E610D",
 

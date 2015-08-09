@@ -16,14 +16,26 @@
   password
   name
   surname
-  living: country_code
+  nickname
   public_status
   description
   status
   instagram_id
   facebook_id
   vkontakte_id
-   
+  
+  living [country.code > name]
+  wasincountries [codes]
+  points [points]
+  ads [ads]
+  
+
+### WASINCOUNTRIES
+  user_id
+  country_code
+  type (was|live)
+  
+
 ### POINTS
   user_id
   lat
@@ -31,18 +43,22 @@
   type (auto|manual)
   
 ### ADS
+  user_id
+  title
+  description
+  img
+  place
+  country
+  expired_date
+
   
-
-
-###  
-
-
-Словари
-=======
-
-### countries.json
+### COUNTRIES  
   code
   name
+  original
+
+  
+  
   
   
   
@@ -52,7 +68,16 @@ API
 
 ### USERS
 [+] /users
+  [{
+        id
+        name
+        surname
+        nickname
+        living [country.code > name]
+    }...]
 [-] /user/#{id}
+  all, without password
+
 
 ### ADS
 [-] /ads

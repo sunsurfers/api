@@ -5,7 +5,7 @@
   "main": "./server.js",
   "scripts": {
     "start": "supervisor -e js,json -i public,webapp server.js",
-    "db": "node ./src/utils/db-refill.js",
+    "db": "node ./db-refill.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,6 +1,6 @@
 var express = require('express');
 var User = require('./scheme/user');
-var Countries = require('./scheme/country');
+var Country = require('./scheme/country');
 var router = express.Router();
 var passport = require('passport');
 var AuthenticationNeeded = require('./utils/AuthenticationNeeded');
@@ -19,6 +19,14 @@ router.get('/users', AuthenticationNeeded, function (req, res) {
   // dev fixtures
   User.getSafeList().then(function (users) {
     res.send(users);
+  });
+});
+
+/* get USER */
+router.get('/user/:nickname', AuthenticationNeeded, function (req, res) {
+  // dev fixtures
+  User.getSafeUser(req.params.nickname).then(function (user) {
+    res.send(user);
   });
 });
 
@@ -46,8 +54,11 @@ router.get('/signin-success', function (req, res) {
 
 /* Countries */
 
-router.get('/countries', function (req, res) {
-  Countries.all().then(res.send.bind(res))
+router.get('/all/countries', function (req, res) {
+  Country.all().then(res.send.bind(res))
+});
+router.get('/all/users', function (req, res) {
+  User.all().then(res.send.bind(res))
 });
 
 
