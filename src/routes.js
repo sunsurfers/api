@@ -62,6 +62,4 @@ router.get('/all/users', function (req, res) {
 });
 
 
-
-
 module.exports = router;

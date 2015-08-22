@@ -23,13 +23,14 @@ app.use(
 
 
 db.authenticate().then(function(){
-  require('./src/initializers').forEach(function (method) {
-    method(app);
+  var server = app.listen(app.get('port'), function () {
+    console.log('[INIT]: server - on port ' + server.address().port);
   });
 
-  var server = app.listen(app.get('port'), function () {
-    console.log('OK: The magic happens on port ' + server.address().port);
+  require('./src/initializers').forEach(function (method) {
+    method(app, server);
   });
+
 }, function (err) {
   console.error('ERROR: Unable to connect to the db "' + db.config.database + '":', err);
 });

@@ -21,49 +21,49 @@ module.exports = [
     //   serialize users into and deserialize users out of the session.  Typically,
     //   this will be as simple as storing the user ID when serializing, and finding
     //   the user by ID when deserializing.
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
       done(null, user.email);
     });
 
-    passport.deserializeUser(function(email, done) {
+    passport.deserializeUser(function (email, done) {
       User.findOne({where: {email: email}}).then(function (res) {
         done(null, res.dataValues);
       });
     });
 
     passport.use(new LocalStrategy({
-          usernameField: 'email',
-          passwordField: 'password',
-          session: false,
-          passReqToCallback: true
-        },
-        function (req, email, password, done) {
-          User.findOne({where: {email: email}}).then(function(res){
-            var user = res.dataValues;
+         usernameField: 'email',
+         passwordField: 'password',
+         session: false,
+         passReqToCallback: true
+       },
+       function (req, email, password, done) {
+         User.findOne({where: {email: email}}).then(function (res) {
+           var user = res.dataValues;
 
-            if (!user) {
-              return done(null, false);
-            } else if (MD5(password) !== user.password) {
-              return done(null, false);
-            }
+           if (!user) {
+             return done(null, false);
+           } else if (MD5(password) !== user.password) {
+             return done(null, false);
+           }
 
-            console.log('user ok', user.email);
-            return done(null, user);
+           console.log('user ok', user.email);
+           return done(null, user);
 
-          }, function(err){
-            done(err, false);
-          });
-        }
+         }, function (err) {
+           done(err, false);
+         });
+       }
     ));
   },
-  function(app) {
+  function (app) {
     // all routes
     app.use(
-        '/',
-        require('./routes')
+       '/',
+       require('./routes')
     );
   },
-  function(app){
+  function (app) {
     /// catch 404 and forward to error handler
     app.use(function (req, res, next) {
       console.error('error of routing');
@@ -95,5 +95,11 @@ module.exports = [
         error: {}
       });
     });
+  },
+
+  function (app, server) {
+    require('./chat/index')(
+       require('socket.io')(server)
+    );
   }
 ];
