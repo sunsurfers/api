@@ -4,11 +4,11 @@ var db = require('./src/db'),
     users = require('./fixture/users.json').users;
 
 
-User.sync({force: true}).then(function(){
-  users.forEach(function(user){
-    User.create(user);
-  });
-});
+//User.sync({force: true}).then(function(){
+//  users.forEach(function(user){
+//    User.create(user);
+//  });
+//});
 
 
 //

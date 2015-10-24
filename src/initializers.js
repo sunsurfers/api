@@ -3,12 +3,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 
 var basicConf = require('./conf/basic-dev.json');
-var User = require('./scheme/user');
+//var User = require('./scheme/user');
 var MD5 = require('MD5');
 var flash = require('connect-flash');
 
 module.exports = [
-  function (app) {
+  function (app, server, db) {
     // authorisation
     app.use(session({secret: basicConf.sessionword}));
     app.use(flash());
@@ -21,13 +21,18 @@ module.exports = [
     //   serialize users into and deserialize users out of the session.  Typically,
     //   this will be as simple as storing the user ID when serializing, and finding
     //   the user by ID when deserializing.
+    function findUserByEmail(email, cb) {
+      return db.query(`SELECT * FROM users WHERE email='${email}'`, cb)
+    }
+
     passport.serializeUser(function (user, done) {
       done(null, user.email);
     });
 
     passport.deserializeUser(function (email, done) {
-      User.findOne({where: {email: email}}).then(function (res) {
-        done(null, res.dataValues);
+      findUserByEmail(email, function (err, user) {
+        if (err) done(err, false);
+        done(null, user);
       });
     });
 
@@ -38,20 +43,17 @@ module.exports = [
          passReqToCallback: true
        },
        function (req, email, password, done) {
-         User.findOne({where: {email: email}}).then(function (res) {
-           var user = res.dataValues;
+         findUserByEmail(email, function (err, user) {
+           if (err) done(err, false);
 
-           if (!user) {
-             return done(null, false);
-           } else if (MD5(password) !== user.password) {
+           var user = rows;
+
+           if (!user || MD5(password) !== user.password) {
              return done(null, false);
            }
 
            console.log('user ok', user.email);
-           return done(null, user);
-
-         }, function (err) {
-           done(err, false);
+           done(null, user);
          });
        }
     ));
@@ -97,9 +99,9 @@ module.exports = [
     });
   },
 
-  function (app, server) {
-    require('./chat/index')(
-       require('socket.io')(server)
-    );
-  }
+  //function (app, server) {
+  //  require('./chat/index')(
+  //     require('socket.io')(server)
+  //  );
+  //}
 ];
