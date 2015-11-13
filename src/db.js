@@ -6,7 +6,7 @@ var
     path = require('path'),
     _ = require('lodash');
 
-var databaseRelativeLocation = './database.json';
+var databaseRelativeLocation = path.join(__dirname, '../database.json');
 
 /*var connection = mysql.createConnection({
  host: "127.0.0.1",
@@ -23,7 +23,7 @@ var database = {
 };
 
 function saveDatabase() {
-  fs.writeFile(path.join(__dirname, databaseRelativeLocation), JSON.stringify(database, null, 4))
+  fs.writeFile(databaseRelativeLocation, JSON.stringify(database, null, 4))
 }
 var transformToSafeUser = (function () {
   var userPublicKeys = [

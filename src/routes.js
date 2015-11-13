@@ -15,7 +15,6 @@ var db = require('./db');
 var user_id = 2;
 
 
-/* get INDEX page */
 router.get('/', function (req, res) {
   res.send(
       "<h1 style='font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace; text-align: center; margin-top: 50px;'>" +
@@ -65,13 +64,17 @@ router.get('/auth-success', function (req, res) {
 });
 
 router.get('/auth-fail', function (req, res) {
-  res.status(401).send({message: 'authorization fail'})
+  res.status(401).send('ты не из нашей песочницы')
 });
-
 
 router.get('/401', function (req, res) {
-  res.status(401).send({message: 'You should be authorize for this query'})
+  res.status(401).send('YOU SHALL NOT PASS')
 });
+
+router.get('*', function (req, res) {
+  res.status(404).send('pacman eated this page')
+});
+
 
 
 function errorSender(res) {

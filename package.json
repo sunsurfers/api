@@ -4,7 +4,7 @@
   "description": "database layer",
   "main": "./server.js",
   "scripts": {
-    "start": "supervisor -e js,json -i public,webapp,.idea,node_modules index.js",
+    "start": "supervisor -e js,json -i public,webapp,.idea,node_modules,database.json index.js",
     "db": "node ./db-refill.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

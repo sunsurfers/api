@@ -45,13 +45,6 @@ db.init().then(function () {
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session()); // persistent login sessions
-
-    // Passport session setup.
-    //   To support persistent login sessions, Passport needs to be able to
-    //   serialize users into and deserialize users out of the session.  Typically,
-    //   this will be as simple as storing the user ID when serializing, and finding
-    //   the user by ID when deserializing.
-
     /*db.findUserByEmail(email).then(function(user){
       if(user) {
 
@@ -99,26 +92,14 @@ db.init().then(function () {
     /**
      * ROUTES
      * */
-    // todo: тоже вынеси
     (function () {
       app.use(
           '/',
           require('./src/routes')
       );
 
-      /// catch 404 and forward to error handler
-      app.use(function (req, res, next) {
-        console.error('error of routing');
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-      });
-
-      /// error handlers
-
-      // development error handler
-      // will print stacktrace
-      if (app.get('env') === 'development') {
+      if (app.get('env') === 'development' || app.get('env') === 'test') {
+        // в деве/тесте отдаем ошибку
         app.use(function (err, req, res, next) {
           res.status(err.status || 500);
           res.send({
@@ -126,17 +107,16 @@ db.init().then(function () {
             error: err
           });
         });
-      }
-
-      // production error handler
-      // no stacktraces leaked to user
-      app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.send({
-          message: err.message,
-          error: {}
+      } else if (app.get('env') === 'production') {
+        // в продакшне замалчиваем
+        app.use(function (err, req, res, next) {
+          res.status(err.status || 500);
+          res.send({
+            message: err.message,
+            error: 'непорядочек'
+          });
         });
-      });
+      }
     })()
   });
 });
