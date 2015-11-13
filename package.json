@@ -1,6 +1,6 @@
 {
   "name": "api.sunsurfers",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "database layer",
   "main": "./server.js",
   "scripts": {
@@ -57,6 +57,7 @@
     "geolib": "^2.0.18",
     "lodash": "^3.9.1",
     "moment": "^2.10.6",
+    "morgan": "^1.6.1",
     "mysql": "^2.6.2",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",

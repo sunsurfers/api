@@ -14,14 +14,16 @@ var configuration = {
 
 app.set('port', configuration.port);
 app.use(require('static-favicon')());
-app.use(require('morgan')('dev'));
+
+app.use(require('morgan')(':remote-addr | :remote-user | :method :url > :status (:response-time ms)'));
 app.use(require('body-parser').json());
-app.use(require('body-parser').urlencoded());
-app.use(require('cookie-parser')());
+//app.use(require('body-parser').urlencoded());
+//app.use(require('cookie-parser')());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./src/utils/allowCors')(configuration.allowDomain));
-app.use(require('./src/utils/updateUserLastActive'));
+app.use(require('./src/middleware/allowCors')(configuration.allowDomain));
+app.use(require('./src/middleware/updateUserLastActive'));
 
 
 db.init().then(function () {
