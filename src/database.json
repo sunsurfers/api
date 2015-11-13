@@ -1,0 +1,103 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "nickname": "marathasanov",
+            "email": "marat@sunserfers.ru",
+            "password": "162eb12d75298612fb3a45e0d6226b87",
+            "name": "Marat2",
+            "surname": "Хасанов",
+            "living": "MY",
+            "public_status": "В любой непонятной ситуации - пой мантры",
+            "description": "Лидер секты вечно улыбающихся",
+            "instagram_id": "marathasanov",
+            "facebook_id": "marathasanov",
+            "vkontakte_id": "marathasanov",
+            "couchsurfing_id": "marathasanov",
+            "swarm_id": "marathasanov",
+            "updated_at": "Thu Dec 10 2014 00:00:00 GMT+0200 (EET)",
+            "rallies": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 2,
+            "nickname": "rogozhnikoff",
+            "email": "murad@sunserfers.ru",
+            "password": "76ae3ce0585ca0051126fd844cefbb30",
+            "name": "Мурад",
+            "surname": "Рогожников",
+            "living": "PH",
+            "public_status": "жизнь случается",
+            "description": "Главный матерщинник слета",
+            "instagram_id": "rogozhnikoff",
+            "facebook_id": "rogozhnikoff",
+            "vkontakte_id": "rogozhnikoff",
+            "couchsurfing_id": null,
+            "swarm_id": null,
+            "updated_at": "Thu Dec 12 2014 00:00:00 GMT+0200 (EET)",
+            "rallies": [
+                4,
+                5
+            ]
+        },
+        {
+            "id": 3,
+            "nickname": "marinkanamaste",
+            "email": "marina@sunserfers.ru",
+            "password": "CE5225D01C39D2567BC229501D9E610D",
+            "name": "Марина",
+            "surname": "Намастэ",
+            "living": "IN",
+            "public_status": "Всем лучи солнца с Индии",
+            "description": "Та самая девочка",
+            "instagram_id": null,
+            "facebook_id": "marinkanamaste",
+            "vkontakte_id": null,
+            "couchsurfing_id": "marinkanamaste",
+            "swarm_id": null,
+            "updated_at": "Thu Dec 09 2014 00:00:00 GMT+0200 (EET)",
+            "rallies": [
+                2,
+                3,
+                4
+            ]
+        }
+    ],
+    "locations": [
+        {
+            "user_id": 1,
+            "created_at": "Thu Dec 08 2015 00:00:00 GMT+0200 (EET)",
+            "lat": 5.285153,
+            "lng": 100.456238
+        },
+        {
+            "user_id": 2,
+            "created_at": "Thu Dec 09 2015 00:00:00 GMT+0200 (EET)",
+            "lat": 50.43333333,
+            "lng": 30.51666667
+        },
+        {
+            "user_id": 2,
+            "created_at": "Thu Dec 12 2015 00:00:00 GMT+0200 (EET)",
+            "lat": 50.43333333,
+            "lng": 30.51666667
+        },
+        {
+            "user_id": 1,
+            "created_at": "Thu Dec 10 2015 00:00:00 GMT+0200 (EET)",
+            "lat": 3.13333333,
+            "lng": 101.68333333
+        },
+        {
+            "user_id": 1,
+            "created_at": "Fri Dec 15 2015 05:10:03 GMT+0200 (EET)",
+            "lat": 5.285153,
+            "lng": 100.456238
+        }
+    ]
+}

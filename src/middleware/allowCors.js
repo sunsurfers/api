@@ -1,6 +1,7 @@
 module.exports = function (domain) {
   if (!domain) {
-    return console.error('set DOMAIN for allowing cors')
+    console.error('set DOMAIN for allowing cors')
+    return;
   }
 
   return function (req, res, next) {
