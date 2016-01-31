@@ -20,7 +20,7 @@ app.use(require('body-parser').json());
 //app.use(require('body-parser').urlencoded());
 //app.use(require('cookie-parser')());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(require('./src/middleware/allowCors')(configuration.allowDomain));
 app.use(require('./src/middleware/updateUserLastActive'));
@@ -47,7 +47,6 @@ db.init().then(function () {
     app.use(passport.session()); // persistent login sessions
     /*db.findUserByEmail(email).then(function(user){
       if(user) {
-
       }
     });*/
 
